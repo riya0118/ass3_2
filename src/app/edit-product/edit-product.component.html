@@ -1,0 +1,41 @@
+<div class="card">
+  <div class="card-body">
+      <form [formGroup]="productForm" novalidate>
+          <div class="form-group">
+              <label class="col-md-4">Product Name</label>
+              <input type="text" class="form-control" formControlName="pname" #pname [(ngModel)]="product.pname" />
+          </div>
+          <div *ngIf="productForm.controls['pname'].errors!=null && productForm.controls['pname'].invalid && (productForm.controls['pname'].dirty || productForm.controls['pname'].touched)"
+              class="alert alert-danger">
+              <div *ngIf="productForm.controls['pname'].errors['required']">
+                  Product Name is required.
+              </div>
+          </div>
+          <div class="form-group">
+              <label class="col-md-4">Price </label>
+              <input type="text" class="form-control" formControlName="price" #price [(ngModel)]="product.price" />
+          </div>
+          <div *ngIf="productForm.controls['price'].errors!=null && productForm.controls['price'].invalid && (productForm.controls['price'].dirty || productForm.controls['price'].touched)"
+              class="alert alert-danger">
+              <div *ngIf="productForm.controls['price'].errors['required']">
+                  Price is required.
+              </div>
+          </div>
+          <div class="form-group">
+              <label class="col-md-4">Quantity </label>
+              <input type="text" class="form-control" formControlName="quantity" #quantity
+                  [(ngModel)]="product.quantity" />
+          </div>
+          <div *ngIf="productForm.controls['quantity'].errors!=null && productForm.controls['quantity'].invalid && (productForm.controls['quantity'].dirty || productForm.controls['quantity'].touched)"
+              class="alert alert-danger">
+              <div *ngIf="productForm.controls['quantity'].errors['required']">
+                  Quantity is required.
+              </div>
+          </div>
+          <div class="form-group">
+              <button type="button" (click)="updateProduct()" [disabled]="productForm.invalid" class="btn btn-primary">Update
+                  Product</button>
+          </div>
+      </form>
+  </div>
+</div>
